@@ -10,7 +10,7 @@
             <!-- <i class="bi bi-cart"></i> -->
           </button>
           <!-- 連結 -->
-          <div class="collapse navbar-collapse bg-white custom-header-md-open" id="navbarNav">
+          <div class="collapse navbar-collapse bg-white custom-header-md-open" id="navbarNav" ref="navbar">
             <!-- d-flex justify-content-center align-items-center -->
             <ul class="navbar-nav">
               <li class="nav-item">
@@ -48,10 +48,11 @@
 <script>
 
 import emitter from '@/libs/emitter'
-
+import { Collapse } from 'bootstrap'
 export default {
   data() {
         return {
+          navbar: {},
             cartData: {
                 carts: []
             }
@@ -68,10 +69,18 @@ export default {
         })
     }
   },
+  watch: {
+    $route() {
+      this.navbar.hide()
+    }
+  },
   mounted() {
     this.getCart()
     emitter.on('get-cart', () => {
       this.getCart()
+    })
+    this.navbar = new Collapse(this.$refs.navbar, {
+      toggle: false
     })
   }
 }

@@ -150,7 +150,7 @@
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
            <Field v-model="form.user.email" id="email" name="email" type="email" class="form-control"
-                      :class="{ 'is-invalid': errors['email'] }" placeholder="請輸入 Email" rules="email"
+                      :class="{ 'is-invalid': errors['email'] }" placeholder="請輸入 Email" rules="required|email"
                     ></Field>
             <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
           </div>
