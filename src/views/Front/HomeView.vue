@@ -194,27 +194,29 @@
       <!-- 容器原始 -->
       <!-- <div class="container d-flex flex-column" style="min-height: 100vh;"> -->
       <!-- min-height: 100vh; -->
-      <div class="container d-flex flex-column" style="height: 70vh;
-      background-image: url(https://i.imgur.com/zlRhPl1.jpg); background-position: center center; background-size: cover;">
-        <div class="row justify-content-center my-auto">
-          <div class="col-md-4 text-center">
-            <router-link style="text-decoration:none;" to="/products">
+      <div class="" style="height: 70vh; background-image: url(https://i.imgur.com/zlRhPl1.jpg); background-position: center center; background-size: cover;">
+      <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 70vh;">
+        <div class="row my-auto">
+          <div class="col text-center">
               <h2 style="color:white">書香環繞 幽靜疏朗<br>此刻開始你的知識饗宴</h2>
               <p style="color:white" class=" mb-0">在這知識的寶庫，總有一本書會吸引到你。</p>
-              <button type="button" class="btn btn-dark rounded-0 mt-4">查看書籍</button>
-            </router-link>
+              <router-link style="text-decoration:none;" to="/products">
+                <button type="button" class="btn btn-dark rounded-0 mt-4">查看書籍</button>
+              </router-link>
           </div>
         </div>
       </div>
+      </div>
     </div>
     <!-- 三商品容器 -->
+    <!-- rounded-0 原本沒圓角的話 -->
     <div class="container">
       <div class="row mt-5">
         <div class="col-md-4 mt-md-4">
           <div class="card border-0 mb-4">
             <img
               src="https://i.imgur.com/CwDtw8n.jpg"
-              class="card-img-top rounded-0"
+              class="card-img-top rounded"
               alt="..."
             />
             <div class="card-body text-center">
@@ -231,7 +233,7 @@
           <div class="card border-0 mb-4">
             <img
               src="https://i.imgur.com/KBUrjVQ.jpg"
-              class="card-img-top rounded-0"
+              class="card-img-top rounded"
               style="background-position: center center;"
               alt="..."
             />
@@ -249,7 +251,7 @@
           <div class="card border-0 mb-4">
             <img
               src="https://i.imgur.com/h9Z1SMk.jpg"
-              class="card-img-top rounded-0"
+              class="card-img-top rounded"
               alt="..."
             />
             <div class="card-body text-center">
@@ -265,9 +267,13 @@
       </div>
     </div>
 
+    <div class="bg-light py-4 d-flex justify-content-center align-items-center">
+      <h2 style="color:black">熱門商品</h2>
+    </div>
+
     <!-- swiper -->
     <!-- on rwd 大的時候 -->
-    <div class="container mb-6 d-none d-md-block">
+    <div class="container my-5 d-none d-md-block">
       <swiper
       :slidesPerView="3"
       :spaceBetween="5"
@@ -289,7 +295,7 @@
       >
         <swiper-slide v-for="item in products" :key="item.id">
           <router-link style="text-decoration:none; color: var(--bs-gray-dark);" :to="`/product/${item.id}`">
-          <div class="card" style="width: 15rem;">
+          <div class="card rounded" style="width: 15rem;">
             <!-- <img :src="item.imageUrl" class="card-img-top img-fluid" style="height: 150px;" alt="...">
             -->
             <figure class="figure d-flex flex-column justify-content-center align-items-center mb-0 mt-3">
@@ -306,7 +312,7 @@
       </swiper>
     </div>
     <!-- on rwd 小的時候 -->
-    <div class="container mb-6 d-block d-md-none">
+    <div class="container my-5 d-block d-md-none">
       <swiper
       :slidesPerView="1"
       :spaceBetween="5"
@@ -328,7 +334,7 @@
       >
         <swiper-slide v-for="item in products" :key="item.id">
           <router-link style="text-decoration:none; color: var(--bs-gray-dark);" :to="`/product/${item.id}`">
-          <div class="card" style="width: 15rem;">
+          <div class="card rounded" style="width: 15rem;">
             <!-- <img :src="item.imageUrl" class="card-img-top img-fluid" style="height: 150px;" alt="...">
             -->
             <figure class="figure d-flex flex-column justify-content-center align-items-center mb-0 mt-3">
@@ -346,14 +352,14 @@
     </div>
     <!-- swiper end -->
 
-    <!-- <div class="bg-light mt-7">
+    <div class="bg-light mt-0">
       <div class="container">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="row justify-content-center py-7">
                 <div class="col-md-6 text-center">
-                  <h3>Lorem ipsum.</h3>
+                  <h3>促銷書展 SWIPER DEFALUT</h3>
                   <p class="my-5">“Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.”</p>
                   <p><small>—Lorem ipsum dolor sit amet.—</small></p>
                 </div>
@@ -388,7 +394,7 @@
           </a>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <!-- <div class="container my-7">
       <div class="row">
@@ -410,21 +416,22 @@
         </div>
       </div>
     </div> -->
-    <!-- <div class="bg-light py-4">
-      <div class="container">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start">
-          <p class="mb-0 fw-bold">Lorem ipsum dolor sit amet.</p>
-          <div class="input-group w-md-50 mt-md-0 mt-3">
-            <input type="text" class="form-control rounded-0" placeholder="" />
+    <div class="bg-light py-5" style="background-image: url('https://i.imgur.com/GUusOW4.jpg'); background-position: 50% 51%; background-size: cover;">
+      <div class="container d-flex flex-column justify-content-between align-items-center">
+        <!-- <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start"> -->
+        <div class="d-flex flex-column justify-content-between align-items-center col-md-5">
+          <p class="my-3" style="color:white; text-shadow: black 0.1em 0.1em 0.2em;">訂閱電子報，第一時間獲得資訊！</p>
+          <div class="input-group w-md-50 mt-md-0 mt-3 mb-3">
+            <input type="text" class="form-control rounded-0" placeholder="輸入信箱，開始訂閱！" />
             <div class="input-group-append">
-              <button type="button" class="btn btn-dark rounded-0" type="button" id="search">
-                Lorem ipsum
+              <button type="button" class="btn btn-dark rounded-0" id="search">
+                訂閱
               </button>
             </div>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   <RouterView/>
 </template>
 
