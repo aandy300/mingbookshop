@@ -22,36 +22,36 @@
         <!-- <div class="col-md-3" v-for="item in filterDate(products)" :key="item.id" > -->
         <div class="col-md-3" v-for="item in products" :key="item.id" >
         <!-- <div class="col-md-3" v-for="item in filterDate(productsAll)" :key="item.id" > -->
-          <div class="card border-0 mb-4 position-relative">
-            <!-- <img :src="item.imageUrl" class="card-img-top rounded-0" alt="..."> -->
-            <div :style="{backgroundImage: `url(${item.imageUrl})`}"
-            style="height: 325px; background-size: cover; background-position:center center">
-            </div>
-            <!-- 商品單向頁面 ${id} -->
-            <!-- 我的最愛 icon -->
-            <router-link to="" >
+          <!-- <router-link style="text-decoration:none;" :to="`/product/${item.id}`"> -->
+            <div class="card border-0 mb-4 position-relative">
+              <!-- <img :src="item.imageUrl" class="card-img-top rounded-0" alt="..."> -->
+              <!-- 我的最愛 icon -->
               <!-- 判定是否在 favor 裡面 -->
               <i v-if="favorite.includes(item.id)" @click="toggleFavorite(item.id)" class="bi bi-heart-fill position-absolute btn btn-lg" style="right: 3px; top: 3px; color:red;"></i>
               <i v-else @click="toggleFavorite(item.id)" class="bi bi-suit-heart position-absolute btn btn-lg" style="right: 3px; top: 3px; color:red;"></i>
-            </router-link>
-            <!-- 商品資料 -->
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3">
-                <!-- text-decoration:none; 去除底線 -->
-                <router-link class="card-text text-muted" :to="`/product/${item.id}`" style="text-decoration:none;">
-                  <!-- 限制title size得用p、英文字跟中文 rem不太一樣、滑鼠hover顏色 -->
-                  <p class="fs-6 m-0" style="height: 3rem; overflow:hidden;" onmouseover="this.style.color='#B08968';" onmouseout="this.style.color='';">{{item.title}}</p>
-                </router-link>
-              </h4>
-              <p class="card-text text-muted mb-0" style="height: 4.5rem; overflow:hidden;">{{item.description}}</p>
-              <!-- 原本的價目 -->
-              <!-- <p class="text-muted mt-3">NT$ {{ item.price }} / {{ item.unit }}</p> -->
-              <!-- <p class="text-muted mt-3">NT$ {{ item.price }} / {{ item.unit }}</p> -->
-              <button @click.prevent="addToCart(item)" type="button" class="btn btn-secondary position-absolute bottom-0 start-0 mb-2">加入購物車</button>
-              <p class="mb-0 text-muted text-end mt-2"><del>NT$ {{ item.origin_price }}</del></p>
-              <p class="h4 fw-bold text-end mt-1 fs-5">NT$ {{ item.price }}</p>
+
+              <router-link style="text-decoration:none;" :to="`/product/${item.id}`">
+              <div :style="{backgroundImage: `url(${item.imageUrl})`}"
+              style="height: 325px; background-size: cover; background-position:center center">
+              </div>
+              <!-- 商品單向頁面 ${id} -->
+              </router-link>
+              <!-- 商品資料 -->
+              <div class="card-body p-0">
+                <h4 class="mb-0 mt-3">
+                  <!-- text-decoration:none; 去除底線 -->
+                  <router-link class="card-text text-muted" :to="`/product/${item.id}`" style="text-decoration:none;">
+                    <!-- 限制title size得用p、英文字跟中文 rem不太一樣、滑鼠hover顏色 -->
+                    <p class="fs-6 m-0" style="height: 3rem; overflow:hidden;" onmouseover="this.style.color='#B08968';" onmouseout="this.style.color='';">{{item.title}}</p>
+                  </router-link>
+                </h4>
+                <p class="card-text text-muted mb-0" style="height: 4.5rem; overflow:hidden;">{{item.description}}</p>
+                <button @click.prevent="addToCart(item)" type="button" class="btn btn-secondary position-absolute bottom-0 start-0 mb-2">加入購物車</button>
+                <p class="mb-0 text-muted text-end mt-2"><del>NT$ {{ item.origin_price }} / {{ item.unit }}</del></p>
+                <p class="h4 fw-bold text-end mt-1 fs-5">NT$ {{ item.price }} / {{ item.unit }}</p>
+              </div>
             </div>
-          </div>
+          <!-- </router-link> -->
         </div>
       </div>
       <!-- 分頁元件 -->

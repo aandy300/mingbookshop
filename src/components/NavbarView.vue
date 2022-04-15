@@ -79,6 +79,7 @@ export default {
     emitter.on('get-cart', () => {
       this.getCart()
     })
+    // 這個 nav沒辦法觀的原因 預設是 一直展開的 true
     this.navbar = new Collapse(this.$refs.navbar, {
       toggle: false
     })

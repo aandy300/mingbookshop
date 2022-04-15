@@ -18,7 +18,8 @@
             <!-- </div> -->
             <!-- </div> -->
             <figure class="figure d-flex flex-column justify-content-center align-items-center mt-5">
-              <img style="height: 550px" :src="product.imageUrl" alt="" class="figure-img img-fluid rounded">
+              <img style="height: 550px" :src="product.imageUrl" alt="" class="figure-img img-fluid rounded d-none d-md-block">
+              <img style="height: 300px" :src="product.imageUrl" alt="" class="figure-img img-fluid rounded d-block d-md-none">
               <!-- <figcaption class="figure-caption text-start">圖片僅供參考</figcaption> -->
             </figure>
             <!-- 圖片調整 要再寫 CSS 先用上面的 -->
@@ -154,10 +155,14 @@ export default {
       } else if (status === 'reset'){
         this.qty = 1
       }
+    },
+    scrollToTop(){
+      window.scrollTo(0, 0)
     }
   },
   mounted() {
     this.getProduct()
+    this.scrollToTop()
   }
 }
 </script>
