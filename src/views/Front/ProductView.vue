@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" style="min-height: 100vh">
       <div class="row align-items-center">
         <!-- 中斷點後面的數字代表甚麼?? -->
         <div class="col-12 col-sm-11 col-md-6">
@@ -99,6 +99,7 @@
         </div>
       </div>
     </div>
+    <h5>關於商品 物流 預定 訂金 退換貨 ...</h5>
 </template>
 
 <script>
