@@ -14,7 +14,7 @@
         <a class="nav-item nav-link text-nowrap px-2" @click="pagination = {total_pages: 1}, getData(1, '分類三')" onclick="event.preventDefault()" href="#">其他用品<span class="sr-only">(current)</span></a>
       </div>
     </nav>
-    <div class="container mt-md-5 mt-3 mb-7" style="min-height: 100vh">
+    <div class="container mt-md-5 mt-3 mb-7">
       <div class="row">
         <!-- 商品單項 -->
         <!-- V-FOR -->
