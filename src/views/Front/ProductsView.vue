@@ -163,7 +163,6 @@ export default {
   },
   mounted() {
     this.getData()
-    // this.getDataAll()
   }
 }
 </script>

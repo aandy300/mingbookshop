@@ -29,7 +29,7 @@
           </div>
           <!-- 右邊icon -->
           <div class="d-flex">
-              <router-link class="nav-link disabled" to="products">
+              <router-link class="nav-link" to="/favorites">
                 <i class="bi bi-heart-fill btn btn-sm fs-6"></i>
               </router-link>
               <router-link class="nav-link" to="/cart">
