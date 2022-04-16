@@ -14,7 +14,7 @@
           </div>
         </div>
         <!-- 商品資訊 結構容器 -->
-        <div class="col-md-12 col-lg-12 col-xl-6">
+        <div class="col-md-12 col-lg-12 col-xl-5">
           <!-- 現在位置  navlink-->
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-white px-0 mb-0 py-3">
@@ -77,14 +77,15 @@
 
       <!-- 常見問題 -->
       <div class="d-flex flex-column justify-content-center align-items-center mb-5">
-        <div class="border-light col col-md-12 col-lg-12 col-xl-10 my-1">
+        <div class="d-flex flex-column justify-content-center align-items-center mb-5 row col-12">
+        <div class="border-light col-md-12 col-lg-12 col-xl-10 my-1 p-0">
           <div class="card-header mb-4"><h3>常見問題</h3></div>
           <!-- color: var(--bs-gray-dark);" -->
           <!-- 手風琴  -->
           <div class="accordion accordion-flush my-3" id="accordionFlushExample">
 
             <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne" style="background-color:#000;">
+              <h2 class="accordion-header" id="flush-headingOne" > <!-- 邊框顏色 = style="background-color:#000;" -->
                 <button style="color: var(--bs-gray-dark);" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                   到貨時間說明
                 </button>
@@ -146,6 +147,7 @@
 
           </div>
           <!-- 手風琴end -->
+        </div>
         </div>
       </div>
       <!-- 常見問題 end -->
