@@ -30,7 +30,9 @@
           <!-- 右邊icon -->
           <div class="d-flex">
               <router-link class="nav-link" to="/favorites">
-                <i class="bi bi-heart-fill btn btn-sm fs-6"></i>
+                <i class="bi bi-heart-fill btn btn-sm fs-6">
+                  <span class="position-absolute translate-middle badge rounded-pill bg-danger" style="top:1rem">{{ favorite.length }}</span>
+                </i>
               </router-link>
               <router-link class="nav-link" to="/cart">
                 <i class="bi bi-cart position-relative btn btn-sm px-1 fs-6">
@@ -53,9 +55,10 @@ export default {
   data() {
         return {
           navbar: {},
-            cartData: {
-                carts: []
-            }
+          cartData: {
+              carts: []
+          },
+          favorite: JSON.parse(localStorage.getItem('favorite')) || [] // favorlist 儲存用 - 抓 localStorage 的資料 (需要轉乘json才能使用 localStorage存的是文字) (需要有預設值 [] 因為一開始是空的話會出錯 ex ? 結構問題)
         }
   },
   methods: {
@@ -70,8 +73,16 @@ export default {
     }
   },
   watch: {
-    $route() {
+    $route() { // for nav bar hide
       this.navbar.hide()
+    },
+    favorite: { // 因為是 陣列 所以需要 深層監聽
+      handler(){ // 控制器
+        // localStorage.setItem('自訂的欄位名稱', 要帶入的 JSON檔案 )
+        // localStorage 沒辦法存 JSON 所以得先轉成字串
+        localStorage.setItem('favorite', JSON.stringify(this.favorite)) // 資料變動的時候寫入到 localStorage
+      },
+      deep: true // 深層監聽
     }
   },
   mounted() {
