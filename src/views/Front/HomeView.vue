@@ -284,7 +284,7 @@
       <swiper
       :slidesPerView="3"
       :spaceBetween="5"
-      :slidesPerGroup="3"
+      :slidesPerGroup="2"
       :slidePrev=(5000)
       :loop="true"
       :loopFillGroupWithBlank="true"

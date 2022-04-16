@@ -14,13 +14,14 @@
         <a class="nav-item nav-link text-nowrap px-2" @click="pagination = {total_pages: 1}, getData(1, '分類三')" onclick="event.preventDefault()" href="#">其他用品<span class="sr-only">(current)</span></a>
       </div>
     </nav>
+    <!-- col-md-12 col-lg-12 col-xl-10 -->
     <div class="container mt-md-5 mt-3 mb-7" style="min-height: 100vh">
       <div class="row">
         <!-- 商品單項 -->
         <!-- V-FOR -->
         <!-- <div class="col-md-3" v-for="item in products" :key="item.id" > -->
         <!-- <div class="col-md-3" v-for="item in filterDate(products)" :key="item.id" > -->
-        <div class="col-md-3" v-for="item in products" :key="item.id" >
+        <div class="col-md-6 col-lg-4 col-xl-3" v-for="item in products" :key="item.id" >
         <!-- <div class="col-md-3" v-for="item in filterDate(productsAll)" :key="item.id" > -->
           <!-- <router-link style="text-decoration:none;" :to="`/product/${item.id}`"> -->
             <div class="card border-0 mb-4 position-relative">

@@ -2,53 +2,20 @@
     <div class="container" style="min-height: 100vh">
       <div class="row align-items-center">
         <!-- 中斷點後面的數字代表甚麼?? -->
-        <div class="col-12 col-sm-11 col-md-6">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-              <!-- <div class="carousel-item active">
-                <img src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80" class="d-block w-100" alt="...">
-              </div> -->
-            <!-- 如果用 `url(${product.imageUrl})` 會出現抓不到結構 ? or 先訂好結構解決 -->
-            <!-- <div style="height: 550px; width: 400px; background-size: cover; background-position:center center" class="card border-0 mb-4 position-relative"> -->
-              <!--  d-flex justify-content-center align-items-center -->
-            <!-- <div style="" class="card border-0 mb-4 position-relative"> -->
-            <!-- <div :style="{backgroundImage: `url(${product.imageUrl})`}"
-            style="height: 550px; background-size: cover; background-position:center center"> -->
-              <!-- <img class="img-fluid" style="height: 550px;" :src="product.imageUrl" alt=""> -->
-            <!-- </div> -->
-            <!-- </div> -->
             <figure class="figure d-flex flex-column justify-content-center align-items-center mt-5">
               <img style="height: 550px" :src="product.imageUrl" alt="" class="figure-img img-fluid rounded d-none d-md-block">
               <img style="height: 300px" :src="product.imageUrl" alt="" class="figure-img img-fluid rounded d-block d-md-none">
               <!-- <figcaption class="figure-caption text-start">圖片僅供參考</figcaption> -->
             </figure>
-            <!-- 圖片調整 要再寫 CSS 先用上面的 -->
-            <!-- <dir style="height:200px; width:200px;">
-              <img :src="product.imageUrl" alt="">
-            </dir> -->
-              <!-- 原本多圖 左右看 改用 swiper? -->
-              <!-- <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80" class="d-block w-100" alt="...">
-              </div> -->
             </div>
-            <!-- 左右按鈕 -->
-            <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a> -->
           </div>
         </div>
-        <!-- <div class="col-md-5"> -->
-        <div class="col-md-6">
-          <!-- 商品位置 結構連結 -->
-          <!-- 這個可能不想要 改一下版面配置 -->
+        <!-- 商品資訊 結構容器 -->
+        <div class="col-md-12 col-lg-12 col-xl-6">
+          <!-- 現在位置  navlink-->
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-white px-0 mb-0 py-3">
               <router-link class="breadcrumb-item" to="/">首頁</router-link>
@@ -57,7 +24,7 @@
               <router-link class="breadcrumb-item text-primary" style="text-decoration:none;  cursor: text;" aria-current="page" to="">商品細項</router-link>
             </ol>
           </nav>
-          <!-- 商品詳細項目 -->
+          <!-- 商品 標題 價格 -->
           <h2 class="fw-bold h1 mb-1">{{ product.title }}</h2>
           <p class="mb-0 text-muted text-end"><del>NT$ {{ product.origin_price }}</del></p>
           <p class="h4 fw-bold text-end">NT$ {{ product.price }}</p>
@@ -88,18 +55,102 @@
           </div>
         </div>
       </div>
+      <!-- 商品資訊 end -->
+
       <!-- 商品說明 -->
       <!-- v-html for 文字換行問題 -->
-      <div class="row my-5">
-        <div class="col-md-6">
-          <p v-html="product.description"></p>
-        </div>
-        <div class="col-md-6">
-          <p v-html="product.content" class="text-muted"></p>
+      <div >
+        <div class="row mt-5 d-flex flex-column justify-content-center align-items-center">
+
+          <div class="col-md-12 col-lg-12 col-xl-10 my-1">
+            <p class="h3 mb-4 card-header">產品說明</p>
+            <p v-html="product.description"></p>
+          </div>
+          <div class="col-md-12 col-lg-12 col-xl-10 my-1">
+            <p class="h3 mb-4 card-header">產品規格</p>
+            <p v-html="product.content" class="text-muted"></p>
+          </div>
+
         </div>
       </div>
+      <!-- 商品說明 end -->
+
+      <!-- 常見問題 -->
+      <div class="d-flex flex-column justify-content-center align-items-center mb-5">
+        <div class="border-light col col-md-12 col-lg-12 col-xl-10 my-1">
+          <div class="card-header mb-4"><h3>常見問題</h3></div>
+          <!-- color: var(--bs-gray-dark);" -->
+          <!-- 手風琴  -->
+          <div class="accordion accordion-flush my-3" id="accordionFlushExample">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne" style="background-color:#000;">
+                <button style="color: var(--bs-gray-dark);" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  到貨時間說明
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p class="card-text">1.新書預購：</p>
+                  <p class="card-text">於預購期間內訂購，請參考商品頁的預計到貨日(此為首批商品到貨日期)若您於預購期間內訂購但逾期未到貨，則是因為您訂購時已超過首批到貨量，需再向國外加訂，到貨時間約是原預計到貨日後3~4週，如有特殊情況將在商品頁中說明。</p>
+                  <p class="card-text">2.既刊調貨：</p>
+                  <p class="card-text">既刊商品為商品頁僅顯示上架日期無預計到貨日，訂購該類且無庫存之商品，在您完成訂單程序之後，調貨時間約7~14個工作日左右，若已無庫存，需由國外再進口，則時間約需3~4週。</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingTwo" style="background-color:#000;">
+                <button style="color: var(--bs-gray-dark);" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  送貨方式
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p class="card-text">商品配送方式 － 透過消費者選擇之物流方式送達。<br><br>消費者訂購之商品若經配送兩次無法送達，再經本公司以電話與Email均無法聯繫逾三天者，本公司將取消該筆訂單，並且全額退款。</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingThree" style="background-color:#000;">
+                <button style="color: var(--bs-gray-dark);" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  退貨說明
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p class="card-text">請注意！下列商品購買後不提供10天的猶豫期。</p>
+                  <p class="card-text">1.易於腐敗、保存期限較短或解約時即將逾期。</p>
+                  <p class="card-text">2.客製化之商品。</p>
+                  <p class="card-text">3.報紙、期刊或雜誌。</p>
+                  <p class="card-text">4.下載版軟體、資訊及電子書。</p>
+                  <p class="card-text">5.藝文展覽票券、藝文表演票券。</p>
+                  <p class="card-text">非屬上列品項之商品均享有到貨十天的猶豫期﹝含例假日﹞。退回之商品必須於猶豫期內寄回。 </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingFour" style="background-color:#000;">
+                <button style="color: var(--bs-gray-dark);" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                  其他事項
+                </button>
+              </h2>
+              <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p class="card-text">商品、活動不定期更新，訂閱電子報獲得最新資訊！</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- 手風琴end -->
+        </div>
+      </div>
+      <!-- 常見問題 end -->
     </div>
-    <h5>關於商品 物流 預定 訂金 退換貨 ...</h5>
+
 </template>
 
 <script>
