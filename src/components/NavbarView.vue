@@ -31,7 +31,7 @@
           <div class="d-flex">
               <router-link class="nav-link" to="/favorites">
                 <i class="bi bi-heart-fill btn btn-sm fs-6">
-                  <span class="position-absolute translate-middle badge rounded-pill bg-danger" style="top:1rem">{{ favorite.length }}</span>
+                  <!-- <span class="position-absolute translate-middle badge rounded-pill bg-danger" style="top:1rem">{{ favorite.length }}</span> -->
                 </i>
               </router-link>
               <router-link class="nav-link" to="/cart">

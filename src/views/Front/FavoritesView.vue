@@ -73,6 +73,33 @@ export default {
     PaginationView
   },
   methods: {
+    // 抓商品資料 - async ver 失敗ing - 非同步關係 foreach 抓資料每次順序會不一樣
+    // asynctest(){
+    //   // const ary = []
+    //   this.favorite.forEach(item => {
+    //       console.log('item', item)
+    //       const ary = []
+    //       this.ary = this.getData(item)
+    //       console.log('ary', ary)
+    //   })
+    // },
+    // async getData(item){
+    //   try {
+    //     const url = `${process.env.VUE_APP_url}/api/${process.env.VUE_APP_path}/product`
+    //     const res = await this.$http.get(`${url}/${item}`)
+    //       .then((res) => {
+    //         this.products.push(res.data)
+    //         console.log('123')
+    //         console.log(this.products)
+    //         return res.data
+    //       })
+    //       console.log('1234')
+    //       return res.data
+    //   } catch (err){
+    //     console.dir(err)
+    //   }
+    // },
+
     // 抓商品資料 - 關注 ver
     getData(page = 1, category){
       const url = `${process.env.VUE_APP_url}/api/${process.env.VUE_APP_path}/product`
@@ -124,6 +151,7 @@ export default {
   },
   mounted() {
     this.getData()
+    // this.asynctest()
   }
 }
 </script>
