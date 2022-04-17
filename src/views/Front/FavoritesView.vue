@@ -107,11 +107,8 @@ export default {
         this.$http.get(`${url}/${item}`)
         .then((res) => {
           this.products.push(res.data)
-          console.log('123')
-          console.log(this.products)
         })
       })
-      console.log('1234')
     },
     // 加入購物車 這裡 用html傳進來的 item抓id、qty先暫時用預設 還沒有做數量功能
     addToCart(item, qty = 1){

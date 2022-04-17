@@ -80,8 +80,8 @@
       <!-- 商品說明 end -->
 
       <!-- 常見問題 -->
-      <div class="d-flex flex-column justify-content-center align-items-center mb-5">
-        <div class="d-flex flex-column justify-content-center align-items-center mb-5 row col-12">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center row col-12">
         <div class="border-light col-md-12 col-lg-12 col-xl-10 my-1 p-0">
           <div class="card-header mb-4"><h3>常見問題</h3></div>
           <!-- color: var(--bs-gray-dark);" -->
@@ -155,11 +155,153 @@
         </div>
       </div>
       <!-- 常見問題 end -->
-    </div>
+      <div class="row mb-5 d-flex flex-column justify-content-center align-items-center">
 
+        <div class="col-md-12 col-lg-12 col-xl-10 my-1">
+          <p class="h3 mb-4 card-header">相關商品</p>
+          <!-- swiper -->
+          <!-- on rwd 大的時候 -->
+          <div class="my-5 d-none d-lg-block">
+            <swiper
+            :slidesPerView="3"
+            :spaceBetween="5"
+            :slidesPerGroup="3"
+            :slidePrev=(5000)
+            :loop="true"
+            :loopFillGroupWithBlank="true"
+            :pagination="{
+              clickable: true,
+            }"
+            :navigation="true"
+            :modules="modules"
+            :autoplay="{
+                  delay: 5000,
+                  pauseOnMouseEnter: true,
+                  disableOnInteraction: false,
+            }"
+            class="mySwiper"
+            >
+              <swiper-slide v-for="item in products" :key="item.id">
+                <router-link style="text-decoration:none; color: var(--bs-gray-dark);" :to="`/product/${item.id}`">
+                <div class="card rounded" style="width: 15rem;">
+                  <!-- <img :src="item.imageUrl" class="card-img-top img-fluid" style="height: 150px;" alt="...">
+                  -->
+                  <figure class="figure d-flex flex-column justify-content-center align-items-center mb-0 mt-3">
+                    <img style="height: 150px" :src="item.imageUrl" alt="" class="figure-img img-fluid rounded">
+                  <!-- <figcaption class="figure-caption text-start">圖片僅供參考</figcaption> -->
+                  </figure>
+                  <div class="card-body d-flex flex-column justify-content-center align-items-center p-2 pb-3">
+                    <p class="card-title fs-6" style="overflow: hidden;">{{ item.title }}</p>
+                    <router-link class="btn btn-primary" style="text-decoration:none;" :to="`/product/${item.id}`">查看商品</router-link>
+                  </div>
+                </div>
+                </router-link>
+              </swiper-slide>
+            </swiper>
+          </div>
+          <!-- on rwd 小的時候 -->
+          <div class="container my-5 d-block d-lg-none">
+            <swiper
+            :slidesPerView="1"
+            :spaceBetween="5"
+            :slidesPerGroup="1"
+            :slidePrev=(5000)
+            :loop="true"
+            :loopFillGroupWithBlank="true"
+            :pagination="{
+              clickable: true,
+            }"
+            :navigation="true"
+            :modules="modules"
+            :autoplay="{
+                  delay: 5000,
+                  pauseOnMouseEnter: true,
+                  disableOnInteraction: false,
+            }"
+            class="mySwiper"
+            >
+              <swiper-slide v-for="item in products" :key="item.id">
+                <router-link style="text-decoration:none; color: var(--bs-gray-dark);" :to="`/product/${item.id}`">
+                <div class="card rounded" style="width: 15rem;">
+                  <!-- <img :src="item.imageUrl" class="card-img-top img-fluid" style="height: 150px;" alt="...">
+                  -->
+                  <figure class="figure d-flex flex-column justify-content-center align-items-center mb-0 mt-3">
+                    <img style="height: 150px" :src="item.imageUrl" alt="" class="figure-img img-fluid rounded">
+                  <!-- <figcaption class="figure-caption text-start">圖片僅供參考</figcaption> -->
+                  </figure>
+                  <div class="card-body d-flex flex-column justify-content-center align-items-center p-2 pb-3">
+                    <p class="card-title fs-6" style="overflow: hidden;">{{ item.title }}</p>
+                    <router-link class="btn btn-primary" style="text-decoration:none;" :to="`/product/${item.id}`">查看商品</router-link>
+                  </div>
+                </div>
+                </router-link>
+              </swiper-slide>
+            </swiper>
+          </div>
+          <!-- swiper end -->
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-xl-10 my-1">
+          <p class="h3 card-header">相關活動</p>
+          <!-- swiper str -->
+          <swiper
+            :slidesPerView="1"
+            :slidesPerGroup="1"
+            :slidePrev=(5000)
+            :loop="true"
+            :loopFillGroupWithBlank="true"
+            :pagination="{
+              clickable: true,
+            }"
+            :modules="modules"
+            :autoplay="{
+                  delay: 7000,
+                  pauseOnMouseEnter: true,
+                  disableOnInteraction: false,
+            }"
+            class="mySwiper"
+            >
+            <swiper-slide>
+              <div class="bg-light py-5" style="width: 100%; background-image: url('https://i.imgur.com/Ljlc9IS.jpg'); background-position: 50% 50%; background-size: cover;">
+                <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 70vh;">
+                  <div class="row my-auto">
+                    <div class="col text-center">
+                        <!-- 文創市集? -->
+                        <h2 style="color:white; text-shadow: black 0.1em 0.1em 0.3em;">《 春季新書特價85折 》</h2>
+                        <p style="color:white; text-shadow: black 0.1em 0.1em 0.3em;" class=" mb-0">2024年10月15日（三）—2024年12月15日（一）</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+                <div class="bg-light py-5" style="width: 100%; background-image: url('https://i.imgur.com/8RAlzBG.jpg'); background-position: 50% 70%; background-size: cover;">
+                  <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 70vh;">
+                    <div class="row my-auto">
+                      <div class="col text-center">
+                          <h2 style="color:white; text-shadow: black 0.1em 0.1em 0.3em;">《 心理學書籍特展 》</h2>
+                          <p style="color:white; text-shadow: black 0.1em 0.1em 0.3em;" class=" mb-0">2024年10月15日（三）—2021年11月11日（一）</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </swiper-slide>
+          </swiper>
+          <!-- swiper end -->
+        </div>
+        <!-- container end -->
+      </div>
+
+    </div>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination, Navigation, Autoplay } from 'swiper'
+
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 import emitter from '@/libs/emitter'
 
@@ -167,6 +309,7 @@ export default {
   data() {
     return {
       qty: 1,
+      products: [],
       product: {
         imageUrl: '',
         content: '',
@@ -175,7 +318,21 @@ export default {
       favorite: JSON.parse(localStorage.getItem('favorite')) || [] // favorlist 儲存用 - 抓 localStorage 的資料 (需要轉乘json才能使用 localStorage存的是文字) (需要有預設值 [] 因為一開始是空的話會出錯 ex ? 結構問題)
     }
   },
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   methods: {
+    getDataAll(){
+      const url = `${process.env.VUE_APP_url}/api/${process.env.VUE_APP_path}/products/all`
+      this.$http.get(url)
+      .then((res) => {
+        this.products = res.data.products
+      })
+      .catch((err) => {
+        console.dir(err)
+      })
+    },
     getProduct() {
       const id = this.$route.params.id
       // const { id } = this.$route.params  // 解構的寫法
@@ -233,13 +390,18 @@ export default {
         // localStorage.setItem('自訂的欄位名稱', 要帶入的 JSON檔案 )
         // localStorage 沒辦法存 JSON 所以得先轉成字串
         localStorage.setItem('favorite', JSON.stringify(this.favorite)) // 資料變動的時候寫入到 localStorage
-        console.log('1', this.favorite)
       },
       deep: true // 深層監聽
     }
   },
+  setup() {
+    return {
+      modules: [Pagination, Navigation, Autoplay]
+    }
+  },
   mounted() {
     this.getProduct()
+    this.getDataAll()
     this.scrollToTop()
   }
 }
