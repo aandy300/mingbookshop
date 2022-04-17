@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 col-lg-3" v-for="item in products" :key="item.id" >
+        <div class="col-md-6 col-lg-4 col-xl-3" v-for="item in products" :key="item.id" >
             <div class="card border-0 mb-4 position-relative">
               <!-- 我的最愛 icon -->
               <!-- 判定是否在 favor 裡面 -->

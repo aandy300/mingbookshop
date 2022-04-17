@@ -16,13 +16,17 @@
         <!-- 商品資訊 結構容器 -->
         <div class="col-md-12 col-lg-12 col-xl-5">
           <!-- 現在位置  navlink-->
-          <nav aria-label="breadcrumb">
+          <nav aria-label="breadcrumb" class="d-flex justify-content-between align-items-center my-2">
             <ol class="breadcrumb bg-white px-0 mb-0 py-3">
               <router-link class="breadcrumb-item" to="/">首頁</router-link>
               <router-link class="breadcrumb-item" to="/products">產品列表</router-link>
               <!-- pointer-events: none; 無效手掌 evnt-->
               <router-link class="breadcrumb-item text-primary" style="text-decoration:none;  cursor: text;" aria-current="page" to="">商品細項</router-link>
             </ol>
+            <div>
+              <a v-if="favorite.includes(product.id)" @click.prevent="toggleFavorite(this.$route.params.id)" class="text-nowrap btn btn-dark py-1">已在關注清單</a>
+              <a v-else @click.prevent="toggleFavorite(product.id)" class="text-nowrap btn btn-outline-dark py-1">加入關注清單</a>
+            </div>
           </nav>
           <!-- 商品 標題 價格 -->
           <h2 class="fw-bold h1 mb-1">{{ product.title }}</h2>
@@ -167,7 +171,8 @@ export default {
         imageUrl: '',
         content: '',
         description: ''
-      }
+      },
+      favorite: JSON.parse(localStorage.getItem('favorite')) || [] // favorlist 儲存用 - 抓 localStorage 的資料 (需要轉乘json才能使用 localStorage存的是文字) (需要有預設值 [] 因為一開始是空的話會出錯 ex ? 結構問題)
     }
   },
   methods: {
@@ -212,6 +217,25 @@ export default {
     },
     scrollToTop(){
       window.scrollTo(0, 0)
+    },
+    toggleFavorite(id){
+      const favoriteId = this.favorite.findIndex(item => item === id)
+      if (favoriteId === -1){ //  findIndex 沒有的話會 -1 而 -1 也是 true
+        this.favorite.push(id)
+      } else { // findIndex 有的話會回傳 目標在array的 index位置
+        this.favorite.splice(favoriteId, 1)
+      }
+    }
+  },
+  watch: {
+    favorite: { // 因為是 陣列 所以需要 深層監聽
+      handler(){ // 控制器
+        // localStorage.setItem('自訂的欄位名稱', 要帶入的 JSON檔案 )
+        // localStorage 沒辦法存 JSON 所以得先轉成字串
+        localStorage.setItem('favorite', JSON.stringify(this.favorite)) // 資料變動的時候寫入到 localStorage
+        console.log('1', this.favorite)
+      },
+      deep: true // 深層監聽
     }
   },
   mounted() {
