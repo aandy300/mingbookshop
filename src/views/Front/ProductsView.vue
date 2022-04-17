@@ -150,6 +150,9 @@ export default {
       } else { // findIndex 有的話會回傳 目標在array的 index位置
         this.favorite.splice(favoriteId, 1)
       }
+    },
+      scrollToTop(){
+      window.scrollTo(0, 0)
     }
   },
   watch: {
@@ -164,6 +167,7 @@ export default {
   },
   mounted() {
     this.getData()
+    this.scrollToTop()
   }
 }
 </script>
