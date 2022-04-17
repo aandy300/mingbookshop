@@ -193,6 +193,7 @@
                   <div class="card-body d-flex flex-column justify-content-center align-items-center p-2 pb-3">
                     <p class="card-title fs-6" style="overflow: hidden;">{{ item.title }}</p>
                     <router-link class="btn btn-primary" style="text-decoration:none;" :to="`/product/${item.id}`">查看商品</router-link>
+                    <!-- <router-link class="btn btn-primary" style="text-decoration:none;" :key="`$route.fullPath`" :to="`/product/${item.id}`" @click="beforeRouteUpdate(item.id)">查看商品</router-link> -->
                   </div>
                 </div>
                 </router-link>
@@ -382,6 +383,20 @@ export default {
       } else { // findIndex 有的話會回傳 目標在array的 index位置
         this.favorite.splice(favoriteId, 1)
       }
+    },
+    reflesh(){ // for 同樣頁面更新問題 - 沒用到
+      this.$root.reload()
+      // this.$router.go('/product')
+      // location.reload(0)
+    }
+  },
+  async beforeRouteUpdate(path){ // for 同樣頁面更新問題 - 沒用到
+    try {
+      // this.$router.go('/products')
+      // this.$router.push(`/product/${path}`)
+      // this.$router.go('/product/-Mz24vMno377r18ObujG')
+    } catch (err){
+      console.log(err)
     }
   },
   watch: {
@@ -399,6 +414,19 @@ export default {
       modules: [Pagination, Navigation, Autoplay]
     }
   },
+  created() {
+    // location.reload()
+        this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        // react to route changes...
+        console.log('456456')
+        // this.$forceUpdate()
+        location.reload()
+        // this.isRouterAlive = false
+        // this.$nextTick(() => { this.isRouterAlive = true })
+      })
+  },
   mounted() {
     this.getProduct()
     this.getDataAll()
@@ -406,3 +434,18 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+
+  .swiper-pagination
+    display: none
+  .swiper-button-prev, .swiper-button-next
+    color: var(--bs-gray-dark)
+  .swiper-slide
+    height: 300px
+    width: 300px
+    display: flex
+    align-items: center
+    justify-content: center
+
+</style>

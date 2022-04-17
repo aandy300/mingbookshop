@@ -510,6 +510,8 @@
       </div>
     </div>
   <RouterView/>
+  <!-- <router-view :key="$route.path"/> -->
+  <!-- <router-view :key="$route.fullPath"></router-view> -->
 </template>
 
 <script>
