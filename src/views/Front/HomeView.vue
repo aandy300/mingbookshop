@@ -349,7 +349,7 @@
             <!-- <figcaption class="figure-caption text-start">圖片僅供參考</figcaption> -->
             </figure>
             <div class="card-body d-flex flex-column justify-content-center align-items-center p-2 pb-3">
-              <p class="card-title fs-6" style="overflow: hidden;">{{ item.title }}</p>
+              <p class="card-title fs-6" style="text-align: center; overflow: hidden;">{{ item.title }}</p>
               <router-link class="btn btn-primary" style="text-decoration:none;" :to="`/product/${item.id}`">查看商品</router-link>
             </div>
           </div>
@@ -434,7 +434,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 mt-md-4">
-          <div class="card border-0 mb-4">
+          <div class="card- border-0 mb-4">
             <img
               src="https://i.imgur.com/CwDtw8n.jpg"
               class="card-img-top rounded"
@@ -451,7 +451,7 @@
           </div>
         </div>
         <div class="col-md-4 mt-md-4">
-          <div class="card border-0 mb-4">
+          <div class="card- border-0 mb-4">
             <img
               src="https://i.imgur.com/KBUrjVQ.jpg"
               class="card-img-top rounded"
@@ -469,7 +469,7 @@
           </div>
         </div>
         <div class="col-md-4 mt-md-4">
-          <div class="card border-0 mb-4">
+          <div class="card- border-0 mb-4">
             <img
               src="https://i.imgur.com/h9Z1SMk.jpg"
               class="card-img-top rounded"

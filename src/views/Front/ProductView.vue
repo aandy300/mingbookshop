@@ -231,7 +231,7 @@
                   <!-- <figcaption class="figure-caption text-start">圖片僅供參考</figcaption> -->
                   </figure>
                   <div class="card-body d-flex flex-column justify-content-center align-items-center p-2 pb-3">
-                    <p class="card-title fs-6" style="overflow: hidden;">{{ item.title }}</p>
+                    <p class="card-title fs-6" style="text-align: center; overflow: hidden;">{{ item.title }}</p>
                     <router-link class="btn btn-primary" style="text-decoration:none;" :to="`/product/${item.id}`">查看商品</router-link>
                   </div>
                 </div>

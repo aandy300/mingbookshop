@@ -21,35 +21,45 @@
         <!-- V-FOR -->
         <!-- <div class="col-md-3" v-for="item in products" :key="item.id" > -->
         <!-- <div class="col-md-3" v-for="item in filterDate(products)" :key="item.id" > -->
-        <div class="col-md-6 col-lg-4 col-xl-3" v-for="item in products" :key="item.id" >
+        <div class="col-md-6 col-lg-4 col-xl-3" v-for="item in products" :key="item.id" style="height: auto">
         <!-- <div class="col-md-3" v-for="item in filterDate(productsAll)" :key="item.id" > -->
           <!-- <router-link style="text-decoration:none;" :to="`/product/${item.id}`"> -->
-            <div class="card border-0 mb-4 position-relative">
+            <div class="card border-0 mb-4 position-relative rounded">
               <!-- <img :src="item.imageUrl" class="card-img-top rounded-0" alt="..."> -->
               <!-- 我的最愛 icon -->
               <!-- 判定是否在 favor 裡面 -->
-              <i v-if="favorite.includes(item.id)" @click="toggleFavorite(item.id)" class="bi bi-heart-fill position-absolute btn btn-lg" style="right: 3px; top: 3px; color:red;"></i>
-              <i v-else @click="toggleFavorite(item.id)" class="bi bi-suit-heart position-absolute btn btn-lg" style="right: 3px; top: 3px; color:red;"></i>
 
-              <router-link style="text-decoration:none;" :to="`/product/${item.id}`">
-              <div :style="{backgroundImage: `url(${item.imageUrl})`}"
-              style="height: 325px; background-size: cover; background-position:center center">
-              </div>
+              <!-- <div :style="{backgroundImage: `url(${item.imageUrl})`}"  style="height: 325px; background-size: cover; background-position:center center">              </div> -->
+              <figure style="" class="figure d-flex flex-column justify-content-center align-items-center position-relative pt-3">
+                <i v-if="favorite.includes(item.id)" @click="toggleFavorite(item.id)" class="bi bi-heart-fill position-absolute btn btn-lg" style="right: 3px; top: 3px; color:red;"></i>
+                <i v-else @click="toggleFavorite(item.id)" class="bi bi-suit-heart position-absolute btn btn-lg" style="right: 3px; top: 3px; color:red;"></i>
+                <router-link style="text-decoration:none;" :to="`/product/${item.id}`">
+                  <img style="height:200px" :src="item.imageUrl" alt="" class="figure-img img-fluid rounded">
+                </router-link>
+                <!-- <img style="height: 300px" :src="product.imageUrl" alt="" class="figure-img img-fluid rounded d-block d-md-none"> -->
+              <!-- <figcaption class="figure-caption text-start">圖片僅供參考</figcaption> -->
+              </figure>
               <!-- 商品單向頁面 ${id} -->
-              </router-link>
               <!-- 商品資料 -->
-              <div class="card-body p-0">
-                <h4 class="mb-0 mt-3">
+              <div class="card-body d-flex flex-column justify-content-center align-items-center pt-0">
+                <h4 class="mb-0">
                   <!-- text-decoration:none; 去除底線 -->
                   <router-link class="card-text text-muted" :to="`/product/${item.id}`" style="text-decoration:none;">
                     <!-- 限制title size得用p、英文字跟中文 rem不太一樣、滑鼠hover顏色 -->
-                    <p class="fs-6 m-0" style="height: 3rem; overflow:hidden;" onmouseover="this.style.color='#B08968';" onmouseout="this.style.color='';">{{item.title}}</p>
+                    <!-- 商品標題 -->
+                    <p class="fs-5 mb-1" style="color:black; height: 1.5rem; overflow:hidden;" onmouseover="this.style.color='#B08968';" onmouseout="this.style.color='';">{{item.title}}</p>
                   </router-link>
                 </h4>
                 <p class="card-text text-muted mb-0" style="height: 4.5rem; overflow:hidden;">{{item.description}}</p>
-                <button @click.prevent="addToCart(item)" type="button" class="btn btn-secondary position-absolute bottom-0 start-0 mb-2">加入購物車</button>
-                <p class="mb-0 text-muted text-end mt-2"><del>NT$ {{ item.origin_price }} / {{ item.unit }}</del></p>
-                <p class="h4 fw-bold text-end mt-1 fs-5">NT$ {{ item.price }} / {{ item.unit }}</p>
+                <div class="d-flex justify-content-between align-items-center col-12">
+                  <div class="">
+                    <p style="white-space: nowrap; text-align: center" class="mb-0 text-muted text-end mt-2"><del>NT$ {{ item.origin_price }} / {{ item.unit }}</del></p>
+                    <p style="white-space: nowrap; text-align: center" class="h4 fw-bold text-end mt-1 fs-5">NT$ {{ item.price }} / {{ item.unit }}</p>
+                  </div>
+                  <div>
+                    <button @click.prevent="addToCart(item)" style="white-space: nowrap" type="button" class="btn btn-secondary text-end ">加入購物車</button>
+                  </div>
+                </div>
               </div>
             </div>
           <!-- </router-link> -->
@@ -171,3 +181,7 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+
+</style>

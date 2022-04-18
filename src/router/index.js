@@ -48,6 +48,11 @@ const routes = [
     meta: { title: '日玥書坊-購物車' }
   },
   {
+    path: '/createorder',
+    component: () => import('../views/Front/CreateOrderView.vue'),
+    meta: { title: '日玥書坊-建立訂單' }
+  },
+  {
     path: '/favorites',
     component: () => import('../views/Front/FavoritesView.vue'),
     meta: { title: '日玥書坊-關注的商品' }
