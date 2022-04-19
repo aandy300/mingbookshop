@@ -5,7 +5,7 @@
     <div v-if="cartData.carts.length === 0" class="d-flex justify-content-center my-5">
       <div class="col-md-6 card text-center" style="">
         <div class="card-body">
-          <strong ><p class="m-0 text-primary" style="font-size: 2rem;">購物車目前沒有東西哦</p></strong>
+          <strong ><p class="m-0 text-primary" style="font-size: 2rem;">目前沒有待確認訂單</p></strong>
           <router-link to="/products">
           <button type="button" class="col-4 btn btn-outline-primary mt-2">前去購買</button>
           </router-link>
@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div v-if="cartData.carts.length > 0" class="row">
       <!-- 表單驗證 -->
       <div class="col-xl-12">
         <div class="my-3 row justify-content-center">

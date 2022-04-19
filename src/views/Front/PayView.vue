@@ -34,12 +34,12 @@
         </div>
       </div>
       <!-- for rwd 顯示 單個 購買狀態 -->
-      <div v-if="order.is_paid" style="max-width: 18rem;" class="col-10 d-flex align-items-center d-block d-sm-none card- text-white bg-secondary my-5 mx-4 rounded">
+      <div v-if="order.is_paid" style="max-width: 18rem;" class="col-10 d-flex flex-column align-items-center d-block d-sm-none card- text-white bg-secondary my-5 mx-4 rounded">
           <i class="bi bi-check2-circle mt-2" style="font-size:40px"></i>
           <p class="card-text text-center m-0">Step3</p>
           <p class="card-text text-center mb-2">付款</p>
       </div>
-      <div v-else style="max-width: 18rem;" class="col-10 d-flex align-items-center d-block d-sm-none card- text-white bg-secondary my-5 mx-4 rounded">
+      <div v-else style="max-width: 18rem;" class="col-10 d-flex flex-column align-items-center d-block d-sm-none card- text-white bg-secondary my-5 mx-4 rounded">
           <i class="bi bi-dash-circle-dotted mt-2" style="font-size:40px"></i>
           <p class="card-text text-center m-0">Step3</p>
           <p class="card-text text-center mb-2">付款</p>
@@ -62,47 +62,35 @@
         <!-- 商品資訊 -->
         <div class="col mb-9">
           <h4>訂單資訊</h4>
-          <table class="table table-striped">
+          <table class="table"><!--  table-striped -->
             <!-- tag -->
             <thead>
               <tr>
-                <th>品名</th>
-                <th style="width: 150px">數量/單位</th>
-                <th>單價</th>
+                <th style="max-width:350px;">品名</th>
+                <th nowrap="nowrap" style="">數量</th>
+                <th nowrap="nowrap" style="">小計</th>
               </tr>
             </thead>
             <!-- 內容 -->
             <tbody>
-                  <!-- 品名 -->
+                <tr v-for="item in order.products" :key="item.id">
+                  <td class="d-flex">
+                    {{ item.product.title }}
+                  </td>
                   <td>
-                    <div v-for="item in order.products" :key="item.id" style="width:250px; overflow:hidden;">
-                      <router-link :to="`/product/${item.product_id}`">
-                      <td style="white-space: nowrap;">
-                        <i class="bi bi-link-45deg p-2"></i>
-                        {{ item.product.title }}
-                      </td>
-                      </router-link>
-                    </div>
+                    {{ item.qty }}
                   </td>
-                  <!-- 數量 -->
                   <td>
-                    <div v-for="item in order.products" :key="item.id">
-                      <td>{{ item.product.price }} x {{ item.qty }} {{ item.product.unit }}</td>
-                    </div>
+                    {{ item.total }}
                   </td>
-                  <!-- 總金額 -->
-                  <td class="text-end">
-                    <div v-for="item in order.products" :key="item.id">
-                      <td>{{ item.total }}</td>
-                    </div>
-                  </td>
+                </tr>
             </tbody>
             <!-- 總金額 -->
             <tfoot>
                   <div class="position-relative">
                     <div class="position-absolute start-50">
-                      <div class="d-flex d-flex align-items-center justify-content-center flex-nowrap">
-                        <div class="d-flex flex-nowrap fs-2 fw-bolder" style="white-space: nowarp; word-break: keep-all;">總金額: </div>
+                      <div class="d-flex justify-content-end align-items-center flex-nowrap">
+                        <div class="d-flex flex-nowrap fs-2 fw-bolder text-end" style="white-space: nowarp; word-break: keep-all;">總金額: </div>
                         <div class="text-end" style="color:red; font-size:1.5rem"><strong>{{ order.total }}</strong></div>
                       </div>
                     </div>
@@ -192,6 +180,7 @@ export default {
       // const { id } = this.$route.params  // 解構的寫法
       this.$http(`${process.env.VUE_APP_url}/api/${process.env.VUE_APP_path}/order/${id}`)
       .then(res => {
+        console.log(res)
           this.order = res.data.order
           this.ready = true
       })

@@ -76,11 +76,11 @@
               <th class="">商品</th>
             </tr> -->
             <tr class="col-12">
-              <th></th>
-              <th class="col-4 text-nowrap text-center">圖片</th>
-              <th class="col-4 text-center" style="width:40%;">品名</th>
-              <th class="col-4 text-nowrap text-center" style="width:20%;">數量/單位</th>
-              <th class="col-4 text-center" style="width:10%" >單價</th>
+              <th style="width: 40px"></th>
+              <th class="text-nowrap text-center d-none d-sm-block">圖片</th>
+              <th class="text-center" style="width:40%; ">品名</th>
+              <th class="text-nowrap text-center" style="width:20%;">數量/單位</th>
+              <th class="text-center" style="width:10%;" nowrap="nowrap">小計</th>
             </tr>
           </thead>
           <tbody>
@@ -96,7 +96,7 @@
                   </button>
                 </td>
                 <!-- d-none d-sm-block  = 手機板隱藏圖片 -->
-                <td class="">
+                <td class="d-none d-sm-block">
                   <!-- 購物車 - 商品圖片 -->
                   <!-- <img style="height: 100px;" class="img-fluid" :src="item.product.imageUrl" alt=""> -->
                   <figure style="" class="figure d-flex flex-column justify-content-center align-items-center position-relative pt-3">
@@ -106,7 +106,14 @@
                     </router-link>
                   </figure>
                 </td>
+                <!--  -->
                 <td class="text-center">
+                  <figure style="" class="figure d-flex flex-column justify-content-center align-items-center position-relative pt-3 d-block d-sm-none">
+                    <router-link style="text-decoration:none;" :to="`/product/${item.product.id}`">
+                      <img style="height:150px" :src="item.product.imageUrl" alt="" class="figure-img img-fluid rounded d-none d-md-block">
+                      <img style="height:100px" :src="item.product.imageUrl" alt="" class="figure-img img-fluid rounded d-block d-md-none">
+                    </router-link>
+                  </figure>
                   {{ item.product.title }}
                   <!-- <div class="text-success">已套用優惠券</div> -->
                 </td>
@@ -124,7 +131,7 @@
                     </div>
                   </div>
                 </td>
-                <td class="text-end">
+                <td nowrap="nowrap" class="text-end">
                   $ {{ item.total }}
                 </td>
               </tr>
