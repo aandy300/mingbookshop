@@ -14,19 +14,6 @@
     </div>
     <!-- 購買步驟狀態 -->
     <div v-else class="row d-flex flex-nowrap justify-content-center align-items-center">
-      <!-- style="max-width: 18rem;" -->
-      <!-- OKver -->
-      <!-- <div style="max-width: 18rem;" class="col-3 d-flex align-items-center card text-white bg-secondary my-5 mx-4 rounded ">
-        <i class="bi bi-check2-circle mt-2" style="font-size:40px"></i>
-          <p class="card-text text-center m-0">Step1</p>
-          <p class="card-text text-center mb-2">確認訂單</p>
-      </div> -->
-      <!-- wait ver -->
-      <!-- <div style="max-width: 18rem;" class="col-3 d-flex align-items-center card text-balck bg-info my-5 mx-4 rounded">
-        <i class="bi bi-dash-circle-dotted mt-2" style="font-size:40px"></i>
-          <p class="card-text text-center m-0">Step2</p>
-          <p class="card-text text-center mb-2">建立訂單</p>
-      </div> -->
       <div style="max-width: 18rem;" class="col-3 d-none d-sm-block  text-white bg-secondary my-5 mx-4 rounded ">
         <div class="d-flex flex-column flex-nowrap justify-content-center align-items-center">
         <i class="bi bi-dash-circle-dotted mt-2" style="font-size:40px"></i>
@@ -138,20 +125,7 @@
             </template>
           </tbody>
           <!-- 上面綁 V 結束 -->
-          <!-- 總計 -->
           <!-- colspan = 要跨行的列數 -->
-          <!-- <tfoot>
-            <tr>
-              <td></td>
-              <td colspan="3" class="text-end fs-3">總計</td>
-              <td class="text-end fs-5">{{ cartData.total }}</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td colspan="3" class="text-end text-success">折扣價</td>
-              <td class="text-end text-success">{{ cartData.total }}</td>
-            </tr>
-          </tfoot> -->
         </table>
         <div class="d-flex flex-column">
           <!-- 總計 套用優惠卷前的 -->

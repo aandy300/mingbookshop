@@ -1,3 +1,8 @@
+// 沒用到
+// 沒用到
+// 沒用到
+// 沒用到
+// 沒用到
 // 不能改訂單資訊 > 驗證部分白做了 // 沒使用
 <template>
 <div class="modal fade" id="vertCentModal" tabindex="-1" aria-labelledby="basicModalLabel" aria-hidden="true" ref="modal">

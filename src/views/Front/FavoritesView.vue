@@ -47,7 +47,7 @@
                     <p style="white-space: nowrap; text-align: center" class="h4 fw-bold text-end mt-1 fs-5">NT$ {{ item.product.price }} / {{ item.product.unit }}</p>
                   </div>
                   <div>
-                    <button @click.prevent="addToCart(item)" style="white-space: nowrap" type="button" class="btn btn-secondary text-end ">加入購物車</button>
+                    <button @click.prevent="addToCart(item.product)" style="white-space: nowrap" type="button" class="btn btn-secondary text-end ">加入購物車</button>
                   </div>
                 </div>
               </div>

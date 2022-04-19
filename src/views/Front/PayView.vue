@@ -1,5 +1,3 @@
-// b5 table 有樣式 但是要結構對才有用 https://bootstrap5.hexschool.com/docs/5.0/content/tables/#striped-rows
-// border border-dark
 <template>
 <div v-if="ready" class="container">
   <div class="row d-flex justify-content-center align-items-center">

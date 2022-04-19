@@ -2,50 +2,30 @@
     <!-- 分類 -->
     <nav class="navbar navbar-expand-lg navbar-light justify-content-center border border-start-0 border-end-0 border-top border-bottom">
       <div class="navbar-nav flex-row overflow-auto navbar-custom-scroll">
-        <!-- 點擊後改 data === 會無效 一個 = 就好 -->
-        <!-- // 原本分類用 現在使用 query 分類 所以沒用到了 -->
-        <!-- <a class="nav-item nav-link text-nowrap px-2" @click="category = 'all', getData()" onclick="event.preventDefault()" href="#">全部商品</a>
-        <a class="nav-item nav-link text-nowrap px-2" @click="pagination = {total_pages: 1}, category = 'type1'" onclick="event.preventDefault()" href="#">文物書籍</a>
-        <a class="nav-item nav-link text-nowrap px-2" @click="pagination = {total_pages: 1}, category = 'type2'" onclick="event.preventDefault()" href="#">周邊雜誌</a>
-        <a class="nav-item nav-link text-nowrap px-2" @click="pagination = {total_pages: 1}, category = 'type3'" onclick="event.preventDefault()" href="#">其他用品<span class="sr-only">(current)</span></a> -->
         <a class="nav-item nav-link text-nowrap px-2" @click="getData()" onclick="event.preventDefault()" href="#">全部商品</a>
         <a class="nav-item nav-link text-nowrap px-2" @click="pagination = {total_pages: 1}, getData(1, '分類一')" onclick="event.preventDefault()" href="#">文物書籍</a>
         <a class="nav-item nav-link text-nowrap px-2" @click="pagination = {total_pages: 1}, getData(1, '分類二')" onclick="event.preventDefault()" href="#">周邊雜誌</a>
         <a class="nav-item nav-link text-nowrap px-2" @click="pagination = {total_pages: 1}, getData(1, '分類三')" onclick="event.preventDefault()" href="#">其他用品<span class="sr-only">(current)</span></a>
       </div>
     </nav>
-    <!-- col-md-12 col-lg-12 col-xl-10 -->
+    <!-- 分類END -->
     <div class="container mt-md-5 mt-3 mb-7" style="min-height: 100vh">
       <div class="row">
-        <!-- 商品單項 -->
-        <!-- V-FOR -->
-        <!-- <div class="col-md-3" v-for="item in products" :key="item.id" > -->
-        <!-- <div class="col-md-3" v-for="item in filterDate(products)" :key="item.id" > -->
+        <!-- 商品資料單項 -->
         <div class="col-md-6 col-lg-4 col-xl-3" v-for="item in products" :key="item.id" style="height: auto">
-        <!-- <div class="col-md-3" v-for="item in filterDate(productsAll)" :key="item.id" > -->
-          <!-- <router-link style="text-decoration:none;" :to="`/product/${item.id}`"> -->
             <div class="card border-0 mb-4 position-relative rounded">
-              <!-- <img :src="item.imageUrl" class="card-img-top rounded-0" alt="..."> -->
-              <!-- 我的最愛 icon -->
-              <!-- 判定是否在 favor 裡面 -->
-
-              <!-- <div :style="{backgroundImage: `url(${item.imageUrl})`}"  style="height: 325px; background-size: cover; background-position:center center">              </div> -->
+              <!-- img -->
               <figure style="" class="figure d-flex flex-column justify-content-center align-items-center position-relative pt-3">
                 <i v-if="favorite.includes(item.id)" @click="toggleFavorite(item.id)" class="bi bi-heart-fill position-absolute btn btn-lg" style="right: 3px; top: 3px; color:red;"></i>
                 <i v-else @click="toggleFavorite(item.id)" class="bi bi-suit-heart position-absolute btn btn-lg" style="right: 3px; top: 3px; color:red;"></i>
                 <router-link style="text-decoration:none;" :to="`/product/${item.id}`">
                   <img style="height:200px" :src="item.imageUrl" alt="" class="figure-img img-fluid rounded">
                 </router-link>
-                <!-- <img style="height: 300px" :src="product.imageUrl" alt="" class="figure-img img-fluid rounded d-block d-md-none"> -->
-              <!-- <figcaption class="figure-caption text-start">圖片僅供參考</figcaption> -->
               </figure>
-              <!-- 商品單向頁面 ${id} -->
               <!-- 商品資料 -->
               <div class="card-body d-flex flex-column justify-content-center align-items-center pt-0">
                 <h4 class="mb-0">
-                  <!-- text-decoration:none; 去除底線 -->
                   <router-link class="card-text text-muted" :to="`/product/${item.id}`" style="text-decoration:none;">
-                    <!-- 限制title size得用p、英文字跟中文 rem不太一樣、滑鼠hover顏色 -->
                     <!-- 商品標題 -->
                     <p class="fs-5 mb-1" style="color:black; height: 1.5rem; overflow:hidden;" onmouseover="this.style.color='#B08968';" onmouseout="this.style.color='';">{{item.title}}</p>
                   </router-link>
@@ -62,11 +42,13 @@
                 </div>
               </div>
             </div>
-          <!-- </router-link> -->
         </div>
+        <!-- 商品資料單項 END -->
       </div>
+
       <!-- 分頁元件 -->
       <PaginationView class="mt-6" :pages="pagination" @get-data="getData"></PaginationView>
+
     </div>
 </template>
 
@@ -113,31 +95,6 @@ export default {
         console.dir(err)
       })
     },
-    // 分流後 跑 商品array 篩選裡面物件的值 > 轉存篩選目標 > 回傳篩選目標
-    // 原本分類用 現在使用 query 分類 所以沒用到了
-    // filterDate(item){
-    //   if (this.category === 'all'){
-    //     return item
-    //   } else if (this.category === 'type1'){
-    //     // 篩選另存 > 回傳篩選結果
-    //     const newArray = item.filter(item =>
-    //       item.category === '分類一'
-    //     )
-    //     return newArray
-    //   } else if (this.category === 'type2'){
-    //     // 篩選另存 > 回傳篩選結果
-    //     const newArray = item.filter(item =>
-    //       item.category === '分類二'
-    //     )
-    //     return newArray
-    //   } else if (this.category === 'type3'){
-    //     // 篩選另存 > 回傳篩選結果
-    //     const newArray = item.filter(item =>
-    //       item.category === '分類三'
-    //     )
-    //     return newArray
-    //   }
-    // },
     // 加入購物車 這裡 用html傳進來的 item抓id、qty先暫時用預設 還沒有做數量功能
     addToCart(item, qty = 1){
       const data = {
@@ -181,7 +138,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass">
-
-</style>

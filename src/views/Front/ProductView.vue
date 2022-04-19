@@ -420,7 +420,6 @@ export default {
       () => this.$route.params,
       (toParams, previousParams) => {
         // react to route changes...
-        console.log('456456')
         // this.$forceUpdate()
         location.reload()
         // this.isRouterAlive = false
